@@ -35,7 +35,9 @@ npx hardhat compile
 - function functionCall(address target, bytes memory data) internal returns (bytes memory)
 - function functionCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory)
 - function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory)
+ 
 - function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage) internal returns (bytes memory)
+
 - function _functionCallWithValue(address target, bytes memory data, uint256 weiValue, string memory errorMessage) private returns (bytes memory)
 
 
@@ -58,7 +60,7 @@ npx hardhat compile
 
 
 ## interface IUniswapV2Factory: 
-// Use for Create a uniswap pair for this new token
+<br> // Use for Create a uniswap pair for this new token
 
 - event PairCreated(address indexed token0, address indexed token1, address pair, uint);
 - function feeTo() external view returns (address);
@@ -72,10 +74,11 @@ npx hardhat compile
 
 
 ## interface IUniswapV2Pair:
-// not use in SafeMoon File
+<br> // not use in SafeMoon File
 
 - event Approval(address indexed owner, address indexed spender, uint value);
 - event Transfer(address indexed from, address indexed to, uint value);
+
 - function name() external pure returns (string memory);
 - function symbol() external pure returns (string memory);
 - function decimals() external pure returns (uint8);
@@ -89,10 +92,12 @@ npx hardhat compile
 - function PERMIT_TYPEHASH() external pure returns (bytes32);
 - function nonces(address owner) external view returns (uint);
 - function permit(address owner, address spender, uint value, uint deadline, uint8 v, bytes32 r, bytes32 s) external;
+
 - event Mint(address indexed sender, uint amount0, uint amount1);
 - event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
 - event Swap(address indexed sender, uint amount0In, uint amount1In, uint amount0Out, uint amount1Out, address indexed to);
 - event Sync(uint112 reserve0, uint112 reserve1);
+
 - function MINIMUM_LIQUIDITY() external pure returns (uint);
 - function factory() external view returns (address);
 - function token0() external view returns (address);
@@ -111,21 +116,33 @@ npx hardhat compile
 
 
 # interface IUniswapV2Router01:
-// use for IUniswapV2Router02 and it's inharitanve 
+<br> // use for IUniswapV2Router02 and it's inharitanve 
 
 - function factory() external pure returns (address);
 - function WETH() external pure returns (address);
+
 - function addLiquidity(address tokenA, address tokenB, uint amountADesired, uint amountBDesired, uint amountAMin, uint amountBMin, address to, uint deadline) external returns (uint amountA, uint amountB, uint liquidity);
+
 - function addLiquidityETH(address token, uint amountTokenDesired, uint amountTokenMin, uint amountETHMin, address to, uint deadline) external payable returns (uint amountToken, uint amountETH, uint liquidity);
+
 - function removeLiquidity(address tokenA, address tokenB, uint liquidity, uint amountAMin, uint amountBMin, address to, uint deadline) external returns (uint amountA, uint amountB);
+
 - function removeLiquidityETH(address token, uint liquidity, uint amountTokenMin, uint amountETHMin, address to, uint deadline) external returns (uint amountToken, uint amountETH);
+
 - function removeLiquidityWithPermit(address tokenA, address tokenB, uint liquidity, uint amountAMin, uint amountBMin, address to, uint deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s) external returns (uint amountA, uint amountB);
+
 - function removeLiquidityETHWithPermit(address token, uint liquidity, uint amountTokenMin, uint amountETHMin, address to, uint deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s ) external returns (uint amountToken, uint amountETH);
+
 - function swapExactTokensForTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts);
+
 - function swapTokensForExactTokens(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts);
+
 - function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts);
+
 - function swapTokensForExactETH(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts);
+
 - function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts);
+
 - function swapETHForExactTokens(uint amountOut, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts);
 
 - function quote(uint amountA, uint reserveA, uint reserveB) external pure returns (uint amountB);
@@ -136,17 +153,22 @@ npx hardhat compile
 
 
 
-// pragma solidity >=0.6.2;
 
 ## interface IUniswapV2Router02 is IUniswapV2Router01:
-// use in SafeMoon Contract
-// IUniswapV2Router02 public immutable uniswapV2Router;
-// IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F);
+
+<br> // pragma solidity >=0.6.2;
+<br> // use in SafeMoon Contract
+<br> // IUniswapV2Router02 public immutable uniswapV2Router;
+<br> // IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F);
 
 - function removeLiquidityETHSupportingFeeOnTransferTokens(address token, uint liquidity, uint amountTokenMin, uint amountETHMin, address to, uint deadline) external returns (uint amountETH);
+
 - function removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(address token, uint liquidity, uint amountTokenMin, uint amountETHMin, address to, uint deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s) external returns (uint amountETH);
+
 - function swapExactTokensForTokensSupportingFeeOnTransferTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external;
+
 - function swapExactETHForTokensSupportingFeeOnTransferTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)external payable;
+
 - function swapExactTokensForETHSupportingFeeOnTransferTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external;
 
 
