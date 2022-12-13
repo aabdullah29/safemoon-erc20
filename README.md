@@ -11,13 +11,14 @@ npx hardhat
 npx hardhat compile
 ```
 
-
-<br>
-<br>
 <br>
 <br>
 
 For understand the SafeMoon project, 1st we should understand the uniswap, and in this repo we explain the uniswap and provide some resources for more details.
+
+<br>
+<br>
+
 
 ## Uniswap Introduction Part 1 
 explain the followings topics [link](https://medium.com/@gregshen0925/decentralized-exchange-intro-3ab7c3937041):
@@ -36,6 +37,10 @@ explain the followings topics [link](https://medium.com/@gregshen0925/decentrali
         - Burn LP token back to two tokens
     - Oracle
     - Flash Loans
+
+<br>
+<br>
+
 
 
 ### Architecture of Uniswap Smart Contracts
