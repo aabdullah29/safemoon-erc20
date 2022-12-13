@@ -1,3 +1,14 @@
+
+## 1. TAsks:
+1. safemoon
+2. refelection finance
+3. implement tokonomic
+
+
+Deployed at goerli:
+1. address: 0x7F645349D81888904a146F0b52F48Ef189356D84
+2. address: 0xA4434dD27255f3A21e0829792832414CDD5f9a9C
+
 # Create new Project:
 
 ``` 
@@ -6,170 +17,99 @@ npx hardhat
 npx hardhat compile
 ```
 
+For understanding the SafeMoon project, 1st we should understand the uniswap, and in this repo we explain the uniswap and provide some resources for more details.
 
-# SafeMoon BAsics:
-## interface IERC20:
-- function totalSupply() external view returns (uint256);
-- function balanceOf(address account) external view returns (uint256);
-- function transfer(address recipient, uint256 amount) external returns (bool);
-- function allowance(address owner, address spender) external view returns (uint256);
-- function approve(address spender, uint256 amount) external returns (bool);
-- function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-- event Transfer(address indexed from, address indexed to, uint256 value);
-- event Approval(address indexed owner, address indexed spender, uint256 value);
+## Uniswap Introduction Part 1 [link](https://medium.com/@gregshen0925/decentralized-exchange-intro-3ab7c3937041)
 
-
-## library SafeMath:
-- unction add(uint256 a, uint256 b) internal pure returns (uint256)
-- function sub(uint256 a, uint256 b) internal pure returns (uint256)
-- function sub(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256)
-- function mul(uint256 a, uint256 b) internal pure returns (uint256)
-- function div(uint256 a, uint256 b) internal pure returns (uint256)
-- function div(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256)
-- function mod(uint256 a, uint256 b) internal pure returns (uint256)
-- function mod(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256)
-
-## library Address:
-- function isContract(address account) internal view returns (bool)
-- function sendValue(address payable recipient, uint256 amount) internal
-- function functionCall(address target, bytes memory data) internal returns (bytes memory)
-- function functionCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory)
-- function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory)
- 
-- function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage) internal returns (bytes memory)
-
-- function _functionCallWithValue(address target, bytes memory data, uint256 weiValue, string memory errorMessage) private returns (bytes memory)
+- Centralized Exchange(CEX) and Decentralized Exchange(DEX)
+- Market Maker
+- Automated Market Maker(AMM)
+- Constant Product Formula (k=x*y)
+- Uniswap V2 Main Features
+    - Token Swap
+    - Liquidity Providing
+        1. Provide two tokens to mint LP token
+        2. Stake LP token
+        3. Unstake LP token
+        4. Burn LP token back to two tokens
+    - Oracle
+    - Flash Loans
 
 
-## abstract contract Context:
-- function _msgSender() internal view virtual returns (address payable)
-- function _msgData() internal view virtual returns (bytes memory)
+### Architecture of Uniswap Smart Contracts
+There are two repositories which both contains two main smart contracts:
+1. Core
+2. Periphery
+        
+1. ### Core
+Core is for storing values(tokens) and managing them. It contains two smart contracts, Pair and Factory.
+
+1. Pair: 
+Smart contract that implements functionality for swapping, minting and burning tokens.
+
+2. Factory: 
+Creating and tracking pairs
+
+2. ### Periphery
+Periphery, obviously, contains smart contract to interact with Core. It also contains two smart contracts, Router and Library
+
+1. Router: 
+Interacting with the core. Provides functionalities such as swapETHForExactTokens, swapExactETHForTokens, etc.
+
+2. Library: 
+Some functionalities like getReserves, getAmountIn, getAmountOut, etc.
 
 
-## contract Ownable is Context:
-- event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
-- constructor () internal
-- modifier onlyOwner()
-- function owner() public view returns (address)
-- function renounceOwnership() public virtual onlyOwner
-- function transferOwnership(address newOwner) public virtual onlyOwner
-- function geUnlockTime() public view returns (uint256)
-- function lock(uint256 time) public virtual onlyOwner
-- function unlock() public virtual
+## Uniswap Introduction Part 2 [link](https://medium.com/coinmonks/uniswap-introduction-2-c60e66530e68)
+
+### Architecture of Uniswap V2 Smart Contracts
+- Core
+    - Pair
+    - Factory
+- Periphery
+    - Router
+    - Library
+
+### Starting with Core
+[Uniswap Introduction Part 2](https://medium.com/coinmonks/uniswap-introduction-2-c60e66530e68)
+ explain the followings topics:
+
+- Pair
+- Mint
+- FeeOn and mintFee
+- Burn
+- Swap
+- Swapping Fee
+
+<br>
+<br>
+<br>
 
 
+# SafeMoon [link](https://github.com/safemoonprotocol/Safemoon.sol/blob/main/Safemoon.sol)
 
-## interface IUniswapV2Factory: 
-<br> // Use for Create a uniswap pair for this new token
+1. orignal safeMoon contract that we copy from their 
+[given](https://github.com/safemoonprotocol/Safemoon.sol/blob/main/Safemoon.sol) 
+github rep can find [here](./contracts/SafeMoon.sol).
 
-- event PairCreated(address indexed token0, address indexed token1, address pair, uint);
-- function feeTo() external view returns (address);
-- function feeToSetter() external view returns (address);
-- function getPair(address tokenA, address tokenB) external view returns (address pair);
-- function allPairs(uint) external view returns (address pair);
-- function allPairsLength() external view returns (uint);
-- function createPair(address tokenA, address tokenB) external returns (address pair);
-- function setFeeTo(address) external;
-- function setFeeToSetter(address) external;
+2. and we also add comments and explain the safemoon contract and remove some unuse code which can found [here](./contracts/SafeMoon_with_Comments.sol).
 
+<br>
+<br>
 
-## interface IUniswapV2Pair:
-<br> // not use in SafeMoon File
+## SafeMoof structure:
+1. interface IERC20: use for erc20 tokens.
+2. library SafeMath: use for safe arithmetic operation.
+3. abstract contract Context:  use for get "msg.sender" and "msg.data".
+4. library Address: use for collection of functions related to the address type
+5. contract Ownable is Context: use for do some owner related operations (transferOwnership, onlyOwner, owner, etc).
+6. interface IUniswapV2Factory: use for create liqudity pair eith "SafeMoon and WETH" 
+7. interface IUniswapV2Pair: this will not use in SafeMoon but when we create new liqudity pair that pair contract will be the instance of this interface.
 
-- event Approval(address indexed owner, address indexed spender, uint value);
-- event Transfer(address indexed from, address indexed to, uint value);
-
-- function name() external pure returns (string memory);
-- function symbol() external pure returns (string memory);
-- function decimals() external pure returns (uint8);
-- function totalSupply() external view returns (uint);
-- function balanceOf(address owner) external view returns (uint);
-- function allowance(address owner, address spender) external view returns (uint);
-- function approve(address spender, uint value) external returns (bool);
-- function transfer(address to, uint value) external returns (bool);
-- function transferFrom(address from, address to, uint value) external returns (bool);
-- function DOMAIN_SEPARATOR() external view returns (bytes32);
-- function PERMIT_TYPEHASH() external pure returns (bytes32);
-- function nonces(address owner) external view returns (uint);
-- function permit(address owner, address spender, uint value, uint deadline, uint8 v, bytes32 r, bytes32 s) external;
-
-- event Mint(address indexed sender, uint amount0, uint amount1);
-- event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
-- event Swap(address indexed sender, uint amount0In, uint amount1In, uint amount0Out, uint amount1Out, address indexed to);
-- event Sync(uint112 reserve0, uint112 reserve1);
-
-- function MINIMUM_LIQUIDITY() external pure returns (uint);
-- function factory() external view returns (address);
-- function token0() external view returns (address);
-- function token1() external view returns (address);
-- function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
-- function price0CumulativeLast() external view returns (uint);
-- function price1CumulativeLast() external view returns (uint);
-- function kLast() external view returns (uint);
-- function mint(address to) external returns (uint liquidity);
-- function burn(address to) external returns (uint amount0, uint amount1);
-- function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
-- function skim(address to) external;
-- function sync() external;
-- function initialize(address, address) external;
+8. interface IUniswapV2Router01: use for use the uniswap function `addLiquidityETH`.
+9. interface IUniswapV2Router02 is IUniswapV2Router01: use for the the uniswap function `swapExactTokensForETHSupportingFeeOnTransferTokens`.
 
 
-
-# interface IUniswapV2Router01:
-<br> // use for IUniswapV2Router02 and it's inharitanve 
-
-- function factory() external pure returns (address);
-- function WETH() external pure returns (address);
-
-- function addLiquidity(address tokenA, address tokenB, uint amountADesired, uint amountBDesired, uint amountAMin, uint amountBMin, address to, uint deadline) external returns (uint amountA, uint amountB, uint liquidity);
-
-- function addLiquidityETH(address token, uint amountTokenDesired, uint amountTokenMin, uint amountETHMin, address to, uint deadline) external payable returns (uint amountToken, uint amountETH, uint liquidity);
-
-- function removeLiquidity(address tokenA, address tokenB, uint liquidity, uint amountAMin, uint amountBMin, address to, uint deadline) external returns (uint amountA, uint amountB);
-
-- function removeLiquidityETH(address token, uint liquidity, uint amountTokenMin, uint amountETHMin, address to, uint deadline) external returns (uint amountToken, uint amountETH);
-
-- function removeLiquidityWithPermit(address tokenA, address tokenB, uint liquidity, uint amountAMin, uint amountBMin, address to, uint deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s) external returns (uint amountA, uint amountB);
-
-- function removeLiquidityETHWithPermit(address token, uint liquidity, uint amountTokenMin, uint amountETHMin, address to, uint deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s ) external returns (uint amountToken, uint amountETH);
-
-- function swapExactTokensForTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts);
-
-- function swapTokensForExactTokens(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts);
-
-- function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts);
-
-- function swapTokensForExactETH(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts);
-
-- function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts);
-
-- function swapETHForExactTokens(uint amountOut, address[] calldata path, address to, uint deadline) external payable returns (uint[] memory amounts);
-
-- function quote(uint amountA, uint reserveA, uint reserveB) external pure returns (uint amountB);
-- function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut) external pure returns (uint amountOut);
-- function getAmountIn(uint amountOut, uint reserveIn, uint reserveOut) external pure returns (uint amountIn);
-- function getAmountsOut(uint amountIn, address[] calldata path) external view returns (uint[] memory amounts);
-- function getAmountsIn(uint amountOut, address[] calldata path) external view returns (uint[] memory amounts);
-
-
-
-
-## interface IUniswapV2Router02 is IUniswapV2Router01:
-
-<br> // pragma solidity >=0.6.2;
-<br> // use in SafeMoon Contract
-<br> // IUniswapV2Router02 public immutable uniswapV2Router;
-<br> // IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F);
-
-- function removeLiquidityETHSupportingFeeOnTransferTokens(address token, uint liquidity, uint amountTokenMin, uint amountETHMin, address to, uint deadline) external returns (uint amountETH);
-
-- function removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(address token, uint liquidity, uint amountTokenMin, uint amountETHMin, address to, uint deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s) external returns (uint amountETH);
-
-- function swapExactTokensForTokensSupportingFeeOnTransferTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external;
-
-- function swapExactETHForTokensSupportingFeeOnTransferTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)external payable;
-
-- function swapExactTokensForETHSupportingFeeOnTransferTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external;
-
+10. SafeMoon is Context, IERC20, Ownable: this is the actuall safemoon contract in which implement the app "SafeMoon" tokonomic.
 
 
