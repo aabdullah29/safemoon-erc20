@@ -1,6 +1,6 @@
 
 
-# deployed at goerli:
+# Deployed at goerli:
 1. address: 0x7F645349D81888904a146F0b52F48Ef189356D84
 2. address: 0xA4434dD27255f3A21e0829792832414CDD5f9a9C
 
