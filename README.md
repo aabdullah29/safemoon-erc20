@@ -1,11 +1,6 @@
 
-## 1. TAsks:
-1. safemoon
-2. refelection finance
-3. implement tokonomic
 
-
-Deployed at goerli:
+# deployed at goerli:
 1. address: 0x7F645349D81888904a146F0b52F48Ef189356D84
 2. address: 0xA4434dD27255f3A21e0829792832414CDD5f9a9C
 
@@ -19,7 +14,9 @@ npx hardhat compile
 
 For understanding the SafeMoon project, 1st we should understand the uniswap, and in this repo we explain the uniswap and provide some resources for more details.
 
-## Uniswap Introduction Part 1 [link](https://medium.com/@gregshen0925/decentralized-exchange-intro-3ab7c3937041)
+## Uniswap Introduction Part 1 
+explain the followings topics [link](https://medium.com/@gregshen0925/decentralized-exchange-intro-3ab7c3937041)]:
+
 
 - Centralized Exchange(CEX) and Decentralized Exchange(DEX)
 - Market Maker
@@ -59,20 +56,12 @@ Interacting with the core. Provides functionalities such as swapETHForExactToken
 2. Library: 
 Some functionalities like getReserves, getAmountIn, getAmountOut, etc.
 
+<br>
+<br>
+<br>
 
-## Uniswap Introduction Part 2 [link](https://medium.com/coinmonks/uniswap-introduction-2-c60e66530e68)
-
-### Architecture of Uniswap V2 Smart Contracts
-- Core
-    - Pair
-    - Factory
-- Periphery
-    - Router
-    - Library
-
-### Starting with Core
-[Uniswap Introduction Part 2](https://medium.com/coinmonks/uniswap-introduction-2-c60e66530e68)
- explain the followings topics:
+## Uniswap Introduction Part 2 
+explain the followings topics [link](https://medium.com/coinmonks/uniswap-introduction-2-c60e66530e68):
 
 - Pair
 - Mint
