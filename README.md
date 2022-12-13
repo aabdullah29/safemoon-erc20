@@ -30,10 +30,10 @@ explain the followings topics [link](https://medium.com/@gregshen0925/decentrali
 - Uniswap V2 Main Features
     - Token Swap
     - Liquidity Providing
-        1. Provide two tokens to mint LP token
-        2. Stake LP token
-        3. Unstake LP token
-        4. Burn LP token back to two tokens
+        - Provide two tokens to mint LP token
+        - Stake LP token
+        - Unstake LP token
+        - Burn LP token back to two tokens
     - Oracle
     - Flash Loans
 
