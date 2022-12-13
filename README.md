@@ -17,7 +17,7 @@ npx hardhat compile
 <br>
 <br>
 
-For understanding the SafeMoon project, 1st we should understand the uniswap, and in this repo we explain the uniswap and provide some resources for more details.
+For understand the SafeMoon project, 1st we should understand the uniswap, and in this repo we explain the uniswap and provide some resources for more details.
 
 ## Uniswap Introduction Part 1 
 explain the followings topics [link](https://medium.com/@gregshen0925/decentralized-exchange-intro-3ab7c3937041):
@@ -43,22 +43,22 @@ There are two repositories which both contains two main smart contracts:
 1. Core
 2. Periphery
         
-1. ### Core
+### 1. Core
 Core is for storing values(tokens) and managing them. It contains two smart contracts, Pair and Factory.
 
-1. Pair: 
+1. **Pair**: 
 Smart contract that implements functionality for swapping, minting and burning tokens.
 
-2. Factory: 
+2. **Factory**: 
 Creating and tracking pairs
 
-2. ### Periphery
+### 2. Periphery
 Periphery, obviously, contains smart contract to interact with Core. It also contains two smart contracts, Router and Library
 
-1. Router: 
+1. **Router**: 
 Interacting with the core. Provides functionalities such as swapETHForExactTokens, swapExactETHForTokens, etc.
 
-2. Library: 
+2. **Library**: 
 Some functionalities like getReserves, getAmountIn, getAmountOut, etc.
 
 <br>
