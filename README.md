@@ -87,6 +87,25 @@ explain the followings topics [link](https://medium.com/coinmonks/uniswap-introd
 
 # SafeMoon [link](https://github.com/safemoonprotocol/Safemoon.sol/blob/main/Safemoon.sol)
 
+SafeMoon use the betst math for the tokonomic. It's distribute the reward among all token holders 
+without transfering the tokens. <br> 
+SafeMoon use the `refelection` amount that will gradually decrease whenever the transaction will happen. <br>
+It's does not have any `mint` and `burn` method for minting the new tokens and for burning the existing tokens. <br>
+It's set their supplay 1 Quadrillion and transfer all tokens to the owner at their deployment time. <br>
+
+But their supplay will be gradually increase because when they give the reward to their token holders they actully mint the new token by using the math that they will use for transfering/give the reward. <br>
+
+Because thy use the `refelection` that refelection will decrease after each transaction and this `refelection` will impact on their total supplay and this the total mathematics. <br>
+
+And user can also burn their tokens by transfering the liqudity pool. It's did't have any `burn` method but the tokens that will transfer to the `liqudity pool` they can consider as the `burn`. <br>
+
+And after each transaction some percentage of tokens will be burn as the form of liqudity fee and some percentage of token will mint as the form of reward using the `refelection` amount. <br>
+
+And may be: When the `refelection` amount will become 0 then no more token will be mint no reward will be transfer to the holders.
+
+
+<br>
+<br>
 1. orignal safeMoon contract that we copy from their 
 [given](https://github.com/safemoonprotocol/Safemoon.sol/blob/main/Safemoon.sol) 
 github rep can find [here](./contracts/SafeMoon.sol).
