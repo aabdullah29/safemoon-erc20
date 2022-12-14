@@ -782,6 +782,7 @@ contract SafeMoon is Context, IERC20, Ownable {
         // check all flags and if they all are true then add new liqudity
         // swapAndLiquifyEnabled: usin this flag admin can controle this feature
         // and lock the transaction using "inSwapAndLiquify" flag
+        // uniswapV2Pair: when we add liqudity then from address will be the uniswapV2Pair address
         if (
             overMinTokenBalance &&
             !inSwapAndLiquify &&
