@@ -87,7 +87,7 @@ explain the followings topics [link](https://medium.com/coinmonks/uniswap-introd
 
 # SafeMoon [link](https://github.com/safemoonprotocol/Safemoon.sol/blob/main/Safemoon.sol)
 
-SafeMoon use the betst math for the tokonomic. It's distribute the reward among all token holders 
+SafeMoon use the best math for the tokonomic. It's distribute the reward among all token holders 
 without transfering the tokens. <br> 
 SafeMoon use the `refelection` amount that will gradually decrease whenever the transaction will happen. <br>
 It's does not have any `mint` and `burn` method for minting the new tokens and for burning the existing tokens. <br>
