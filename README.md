@@ -101,7 +101,11 @@ And user can also burn their tokens by transfering the liqudity pool. It's did't
 
 And after each transaction some percentage of tokens will be burn as the form of liqudity fee and some percentage of token will mint as the form of reward using the `refelection` amount. <br>
 
-And may be: When the `refelection` amount will become 0 then no more token will be mint no reward will be transfer to the holders.
+And may be: When the `refelection` amount will become 0 then no more token will be mint no reward will be transfer to the holders. <br>
+
+But when i read the code again i found `require(rAmount <= _rTotal)` in `tokenFromReflection(uint256 rAmount)` method 
+and found `require(tAmount <= _tTotal)` in `reflectionFromToken(uint256 tAmount, bool deductTransferFee)` method that 
+may be prevent the total supplay to croos the token total supplay limit.
 
 
 <br>
