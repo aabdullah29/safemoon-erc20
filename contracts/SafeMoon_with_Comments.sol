@@ -693,6 +693,12 @@ contract SafeMoon is Context, IERC20, Ownable {
         return rSupply.div(tSupply);
     }
 
+    // THIS FUNCTION CONFUSED ME
+    // `_tOwned[_excluded[i]] > tSupply`: this condition can never be true
+    // `_rOwned[_excluded[i]] > rSupply`: if this condition is true then
+    // `rSupply.sub(_rOwned[_excluded[i]])`: this experation through an error 
+    // because return value will be in a negtive(-) value (doing "a - b" while "b > a")
+
     // return the running token amount and refelection amount
     // thet refelection and token that hold the excluded accouns
     // are not the part of our current running supplay
